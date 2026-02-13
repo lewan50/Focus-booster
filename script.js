@@ -49,27 +49,34 @@ function resetTimer() {
 
 function loadMusic() {
   const url = document.getElementById('ytUrl').value;
-  let videoId = "";
+  const playerArea = document.getElementById('playerArea');
+  let embedUrl = "";
 
-  // Support for standard and mobile/short links
-  if (url.includes("v=")) {
-    videoId = url.split("v=")[1].split("&")[0];
-  } else if (url.includes("youtu.be/")) {
-    videoId = url.split("youtu.be/")[1].split("?")[0];
+  // 1. Check for Playlists (contains 'list=')
+  if (url.includes("list=")) {
+    const playlistId = url.split("list=")[1].split("&")[0];
+    embedUrl = `https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1`;
+  } 
+  // 2. Check for Single Videos
+  else if (url.includes("v=")) {
+    const videoId = url.split("v=")[1].split("&")[0];
+    embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  } 
+  else if (url.includes("youtu.be/")) {
+    const videoId = url.split("youtu.be/")[1].split("?")[0];
+    embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   }
 
-  if (videoId) {
-    const playerArea = document.getElementById('playerArea');
+  if (embedUrl) {
     playerArea.style.display = "block";
-    // Adding referrerpolicy fixes the 2026 configuration error
     playerArea.innerHTML = `
       <iframe 
-        src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+        src="${embedUrl}" 
         allow="autoplay; encrypted-media" 
         referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen>
       </iframe>`;
   } else {
-    alert("Please paste a valid YouTube URL.");
+    alert("Please paste a valid YouTube video or playlist link.");
   }
 }
