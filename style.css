@@ -1,0 +1,126 @@
+:root {
+  --bg: #0f051d;
+  --accent: #d459e6;
+  --glass: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #2e1065, #0f051d);
+  font-family: 'Inter', sans-serif;
+  color: #f3e8ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass-container {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 3rem;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.timer-display {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(212, 89, 230, 0.3);
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  opacity: 0.5;
+}
+
+input[type="number"] {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  color: #fff;
+  width: 60px;
+  height: 50px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.btn-main {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s;
+}
+
+.btn-main:active { transform: scale(0.95); }
+
+.btn-reset {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.btn-load {
+  background: #6b21a8;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.player-wrapper {
+  margin-top: 20px;
+  display: none;
+  aspect-ratio: 16/9;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
